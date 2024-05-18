@@ -28,7 +28,7 @@ public class ViewTest {
     public void printHeaderOk() {
         HeaderView.print();
 
-        String expectedOutput = "date || credit || debit || balance";
+        String expectedOutput = "date       || credit   || debit    || balance  \\n";
 
         assertEquals(expectedOutput, outContent.toString());
     }
