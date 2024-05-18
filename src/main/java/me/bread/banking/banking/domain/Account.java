@@ -13,6 +13,11 @@ public class Account {
         this.balance = new Money(balance, Currency.getInstance(Locale.US));
     }
 
+    public Account(final BigDecimal balance, final History history) {
+        this.balance = new Money(balance, Currency.getInstance(Locale.US));
+        this.history = history;
+    }
+
     public void deposit(final BigDecimal target) {
        this.balance = this.balance.add(new Money(target, Currency.getInstance(Locale.US)));
     }
