@@ -1,6 +1,6 @@
-package me.bread.banking.view;
+package me.bread.banking.banking.view;
 
-import me.bread.banking.model.BodyModel;
+import me.bread.banking.banking.model.BodyModel;
 
 import java.math.BigDecimal;
 import java.util.Optional;

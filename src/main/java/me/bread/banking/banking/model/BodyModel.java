@@ -1,4 +1,4 @@
-package me.bread.banking.model;
+package me.bread.banking.banking.model;
 
 
 import java.math.BigDecimal;
