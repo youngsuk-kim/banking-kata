@@ -15,26 +15,10 @@ public record Money(BigDecimal amount, Currency currency) {
         return new Money(amount.subtract(other.amount), currency);
     }
 
-    public Money multiply(BigDecimal factor) {
-        return new Money(amount.multiply(factor), currency);
-    }
-
-    public Money divide(BigDecimal divisor) {
-        return new Money(amount.divide(divisor), currency);
-    }
-
     private void checkCurrency(Money other) {
         if (!currency.equals(other.currency)) {
             throw new IllegalArgumentException("Cannot combine money of different currencies");
         }
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Money money = (Money) o;
-        return amount.equals(money.amount) && currency.equals(money.currency);
     }
 
     @Override
