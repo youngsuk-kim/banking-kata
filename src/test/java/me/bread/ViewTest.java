@@ -1,5 +1,8 @@
 package me.bread;
 
+import me.bread.banking.model.BodyModel;
+import me.bread.banking.utils.BigDecimalFormater;
+import me.bread.banking.view.BodyView;
 import me.bread.banking.view.HeaderView;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -7,6 +10,8 @@ import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.math.BigDecimal;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -28,7 +33,24 @@ public class ViewTest {
     public void printHeaderOk() {
         HeaderView.print();
 
-        String expectedOutput = "date       || credit   || debit    || balance  \\n";
+        String expectedOutput = "date       || credit   || debit    || balance   ";
+
+        assertEquals(expectedOutput, outContent.toString());
+    }
+
+    @Test
+    public void printBodyOk() {
+        BodyView.print(
+                new BodyModel(
+                        Optional.of("14/01/2012"),
+                        Optional.empty(),
+                        Optional.of(BigDecimalFormater.toViewString(new BigDecimal(500))),
+                        Optional.of(BigDecimalFormater.toViewString(new BigDecimal(2500)))
+                )
+        );
+
+        String expectedOutput =
+                "14/01/2012 ||          || 500.00   || 2500.00   ";
 
         assertEquals(expectedOutput, outContent.toString());
     }
