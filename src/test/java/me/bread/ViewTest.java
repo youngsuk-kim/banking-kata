@@ -32,7 +32,7 @@ public class ViewTest {
     public void printHeaderOk() {
         HeaderView.print();
 
-        String expectedOutput = "date       || credit   || debit    || balance   \n";
+        String expectedOutput = "date       || credit   || debit    || balance  \n";
 
         assertEquals(expectedOutput, outContent.toString());
     }
