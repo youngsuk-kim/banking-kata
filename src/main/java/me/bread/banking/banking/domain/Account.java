@@ -7,12 +7,13 @@ import java.util.Locale;
 public class Account {
 
     private Money balance;
+    private History history;
 
-    public Account(BigDecimal balance) {
+    public Account(final BigDecimal balance) {
         this.balance = new Money(balance, Currency.getInstance(Locale.US));
     }
 
-    public void deposit(BigDecimal target) {
+    public void deposit(final BigDecimal target) {
        this.balance = this.balance.add(new Money(target, Currency.getInstance(Locale.US)));
     }
 
@@ -20,7 +21,7 @@ public class Account {
         return this.balance;
     }
 
-    public void withdraw(BigDecimal withdrawMoney) {
+    public void withdraw(final BigDecimal withdrawMoney) {
         this.balance = this.balance.subtract(new Money(withdrawMoney, Currency.getInstance(Locale.US)));
     }
 }

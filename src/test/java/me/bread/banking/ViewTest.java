@@ -1,6 +1,6 @@
 package me.bread.banking;
 
-import me.bread.banking.banking.model.BodyModel;
+import me.bread.banking.banking.view.model.BodyModel;
 import me.bread.banking.banking.view.BodyView;
 import me.bread.banking.banking.view.HeaderView;
 import org.junit.jupiter.api.AfterEach;
