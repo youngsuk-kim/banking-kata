@@ -7,6 +7,6 @@ import java.math.BigDecimal;
 public class WithdrawUseCase {
 
     public void execute(final Account account, final BigDecimal amount) {
-        account.deposit(amount);
+        account.withdraw(amount);
     }
 }
