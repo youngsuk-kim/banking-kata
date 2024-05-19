@@ -22,11 +22,15 @@ public class Account {
        this.balance = this.balance.add(new Money(target, Currency.getInstance(Locale.US)));
     }
 
+    public void withdraw(final BigDecimal withdrawMoney) {
+        this.balance = this.balance.subtract(new Money(withdrawMoney, Currency.getInstance(Locale.US)));
+    }
+
     public Money getBalance() {
         return this.balance;
     }
 
-    public void withdraw(final BigDecimal withdrawMoney) {
-        this.balance = this.balance.subtract(new Money(withdrawMoney, Currency.getInstance(Locale.US)));
+    public History getHistory() {
+        return history;
     }
 }

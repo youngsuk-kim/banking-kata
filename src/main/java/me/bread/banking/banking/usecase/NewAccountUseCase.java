@@ -6,12 +6,13 @@ import java.math.BigDecimal;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.Currency;
+import java.util.Locale;
 
 public class NewAccountUseCase {
 
 
     public void execute(final Name name, final BigDecimal initialAmount) {
-        Money balance = new Money(initialAmount, Currency.getInstance("USD"));
+        Money balance = new Money(initialAmount, Currency.getInstance(Locale.US));
         ZonedDateTime now = ZonedDateTime.now(ZoneId.of("UTC"));
 
         History history = new History.HistoryBuilder()

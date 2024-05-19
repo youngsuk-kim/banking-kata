@@ -1,12 +1,22 @@
 package me.bread.banking.banking.view.model;
 
 
-import java.math.BigDecimal;
+import me.bread.banking.banking.domain.Money;
+
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 
 public record BodyModel(
         Optional<String> date,
-        Optional<BigDecimal> credit,
-        Optional<BigDecimal> debit,
-        Optional<BigDecimal> balance
-) { }
+        Optional<Money> credit,
+        Optional<Money> debit,
+        Optional<Money> balance
+) {
+
+    public String getDateString() {
+        ZonedDateTime zonedDateTime = ZonedDateTime.parse(date().orElse(""));
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        return zonedDateTime.format(formatter);
+    }
+}
