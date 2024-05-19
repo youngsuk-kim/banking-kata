@@ -21,6 +21,10 @@ public class StartBanking {
         Name name = new Name("영석", "김");
         Account account = new NewAccountUseCase().execute(name, new BigDecimal(10000));
 
+        printRandomAccountHistories(account, name);
+    }
+
+    private static void printRandomAccountHistories(Account account, Name name) {
         Random random = new Random();
         for (int i = 0; i < 100; i++) {
             BigDecimal amount = BigDecimal.valueOf(random.nextInt(5000) + 100);
