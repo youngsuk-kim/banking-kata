@@ -1,13 +1,12 @@
 package me.bread.banking.banking.domain;
 
 import java.math.BigDecimal;
-import java.util.Currency;
-import java.util.Locale;
+import java.util.*;
 
 public class Account {
 
     private Money balance;
-    private History history;
+    private final ArrayList<History> history = new ArrayList<>();
 
     public Account(final BigDecimal balance) {
         this.balance = new Money(balance, Currency.getInstance(Locale.US));
@@ -15,7 +14,7 @@ public class Account {
 
     public Account(final BigDecimal balance, final History history) {
         this.balance = new Money(balance, Currency.getInstance(Locale.US));
-        this.history = history;
+        this.history.addFirst(history);
     }
 
     public void deposit(final BigDecimal target) {
@@ -30,7 +29,7 @@ public class Account {
         return this.balance;
     }
 
-    public History getHistory() {
+    public List<History> getHistory() {
         return history;
     }
 }
