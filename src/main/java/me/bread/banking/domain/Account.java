@@ -16,22 +16,22 @@ public class Account {
     public Account(BigDecimal initialBalance) {
         this.accountId = new AccountId();
         this.balance = new Money(initialBalance, Currency.getInstance(Locale.US));
-        recordHistory(null, balance);
+        recordTx(null, balance);
     }
 
     public void deposit(BigDecimal amount) {
         Money depositAmount = new Money(amount, Currency.getInstance(Locale.US));
         this.balance = this.balance.add(depositAmount);
-        recordHistory(depositAmount, null);
+        recordTx(depositAmount, null);
     }
 
     public void withdraw(BigDecimal amount) {
         Money withdrawAmount = new Money(amount, Currency.getInstance(Locale.US));
         this.balance = this.balance.subtract(withdrawAmount);
-        recordHistory(null, withdrawAmount);
+        recordTx(null, withdrawAmount);
     }
 
-    private void recordHistory(Money credit, Money debit) {
+    private void recordTx(Money credit, Money debit) {
         final ZonedDateTime now = ZonedDateTime.now(ZoneId.of("UTC"));
         Transaction transaction = new Transaction.HistoryBuilder()
                 .date(now)
