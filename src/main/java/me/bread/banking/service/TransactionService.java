@@ -1,9 +1,9 @@
-package me.bread.banking.banking.service;
+package me.bread.banking.service;
 
-import me.bread.banking.banking.domain.Account;
-import me.bread.banking.banking.view.BodyView;
-import me.bread.banking.banking.view.HeaderView;
-import me.bread.banking.banking.view.model.BodyModel;
+import me.bread.banking.domain.Account;
+import me.bread.banking.view.BodyView;
+import me.bread.banking.view.HeaderView;
+import me.bread.banking.view.model.BodyModel;
 
 import java.math.BigDecimal;
 import java.util.Optional;

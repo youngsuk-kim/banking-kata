@@ -1,7 +1,7 @@
-package me.bread.banking.banking;
+package me.bread.banking;
 
-import me.bread.banking.banking.domain.Account;
-import me.bread.banking.banking.service.TransactionService;
+import me.bread.banking.domain.Account;
+import me.bread.banking.service.TransactionService;
 
 import java.math.BigDecimal;
 

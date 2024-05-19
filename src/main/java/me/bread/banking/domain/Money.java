@@ -1,4 +1,4 @@
-package me.bread.banking.banking.domain;
+package me.bread.banking.domain;
 
 import java.math.BigDecimal;
 import java.util.Currency;

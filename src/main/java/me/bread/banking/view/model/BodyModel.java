@@ -1,7 +1,7 @@
-package me.bread.banking.banking.view.model;
+package me.bread.banking.view.model;
 
 
-import me.bread.banking.banking.domain.Money;
+import me.bread.banking.domain.Money;
 
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;

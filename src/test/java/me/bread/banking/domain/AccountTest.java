@@ -1,48 +1,57 @@
 package me.bread.banking.domain;
 
-import me.bread.banking.banking.domain.Account;
-import me.bread.banking.banking.domain.Money;
-import org.junit.jupiter.api.Assertions;
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 import java.util.Currency;
 import java.util.Locale;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+public class AccountTest {
 
-class AccountTest {
+    private Account account;
+    private final BigDecimal initialBalance = new BigDecimal("1000.00");
 
-    @Test
-    void depositTest() {
-        // Given
-        final Account account = new Account(new BigDecimal(10000));
-
-        final BigDecimal depositMoney = new BigDecimal(1000);
-
-        // When
-        account.deposit(depositMoney);
-
-        // Then
-        Assertions.assertEquals(
-                account.getBalance(),
-                new Money(new BigDecimal(11000), Currency.getInstance(Locale.US))
-        );
+    @BeforeEach
+    public void setUp() {
+        account = new Account(initialBalance);
     }
 
     @Test
-    void withdrawTest() {
-        // Given
-        final Account account = new Account(new BigDecimal(10000));
-        final BigDecimal withdrawMoney = new BigDecimal(1000);
+    public void accountInitializationTest() {
+        assertNotNull(account.getAccountId());
+        assertEquals(new Money(initialBalance, Currency.getInstance(Locale.US)), account.getBalance());
+        assertFalse(account.getHistory().isEmpty());
+    }
 
-        // When
-        account.withdraw(withdrawMoney);
+    @Test
+    public void depositTest() {
+        BigDecimal depositAmount = new BigDecimal("200.00");
+        account.deposit(depositAmount);
+        Money expectedBalance = new Money(initialBalance.add(depositAmount), Currency.getInstance(Locale.US));
 
-        // Then
-        assertEquals(
-                account.getBalance(),
-                new Money(new BigDecimal(9000), Currency.getInstance(Locale.US))
-        );
+        assertEquals(expectedBalance, account.getBalance());
+        assertEquals(2, account.getHistory().size()); // Includes initial history
+    }
+
+    @Test
+    public void withdrawTest() {
+        BigDecimal withdrawAmount = new BigDecimal("150.00");
+        account.withdraw(withdrawAmount);
+        Money expectedBalance = new Money(initialBalance.subtract(withdrawAmount), Currency.getInstance(Locale.US));
+
+        assertEquals(expectedBalance, account.getBalance());
+        assertEquals(2, account.getHistory().size()); // Includes initial history
+    }
+
+    @Test
+    public void withdrawInsufficientFundsTest() {
+        BigDecimal withdrawAmount = new BigDecimal("1200.00"); // More than the initial balance
+        account.withdraw(withdrawAmount);
+        Money expectedBalance = new Money(initialBalance, Currency.getInstance(Locale.US)); // No change expected
+
+        assertEquals(expectedBalance, account.getBalance()); // Balance remains the same
+        assertEquals(2, account.getHistory().size()); // Includes initial history
     }
 }

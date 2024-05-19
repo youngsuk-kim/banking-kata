@@ -1,6 +1,5 @@
 package me.bread.banking.domain;
 
-import me.bread.banking.banking.domain.Money;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;

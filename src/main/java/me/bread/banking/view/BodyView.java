@@ -1,7 +1,7 @@
-package me.bread.banking.banking.view;
+package me.bread.banking.view;
 
-import me.bread.banking.banking.domain.Money;
-import me.bread.banking.banking.view.model.BodyModel;
+import me.bread.banking.domain.Money;
+import me.bread.banking.view.model.BodyModel;
 
 import java.util.Optional;
 

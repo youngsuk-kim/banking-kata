@@ -1,4 +1,4 @@
-package me.bread.banking.banking.view;
+package me.bread.banking.view;
 
 public class HeaderView {
 
