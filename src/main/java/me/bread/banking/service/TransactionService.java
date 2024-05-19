@@ -27,13 +27,11 @@ public class TransactionService {
 
     private static void printHistories(Account account) {
         HeaderView.print();
-        account.getHistory().forEach(history -> {
-            BodyView.print(new BodyModel(
-                    Optional.of(history.date().toString()),
-                    Optional.ofNullable(history.credit()),
-                    Optional.ofNullable(history.debit()),
-                    Optional.ofNullable(history.balance())
-            ));
-        });
+        account.getHistory().forEach(history -> BodyView.print(new BodyModel(
+                Optional.of(history.date().toString()),
+                Optional.ofNullable(history.credit()),
+                Optional.ofNullable(history.debit()),
+                Optional.ofNullable(history.balance())
+        )));
     }
 }
