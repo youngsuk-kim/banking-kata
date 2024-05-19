@@ -1,4 +1,4 @@
-package me.bread.banking.banking.facade;
+package me.bread.banking.banking.service;
 
 import me.bread.banking.banking.domain.Account;
 import me.bread.banking.banking.domain.History;
@@ -11,7 +11,7 @@ import java.math.BigDecimal;
 import java.util.Optional;
 import java.util.Random;
 
-public class TransactionFacade {
+public class TransactionService {
     public static void printRandomAccountHistories(Account account, Name name) {
         generateRandomTransactions(account);
         printHistories(account, name);
