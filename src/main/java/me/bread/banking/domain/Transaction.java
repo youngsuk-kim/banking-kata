@@ -2,7 +2,7 @@ package me.bread.banking.domain;
 
 import java.time.ZonedDateTime;
 
-public record History (
+public record Transaction(
     ZonedDateTime date,
     Money credit,
     Money debit,
@@ -34,8 +34,8 @@ public record History (
             return this;
         }
 
-        public History build() {
-            return new History(date, credit, debit, balance);
+        public Transaction build() {
+            return new Transaction(date, credit, debit, balance);
         }
     }
 

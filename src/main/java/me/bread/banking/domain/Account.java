@@ -11,7 +11,7 @@ import java.util.Locale;
 public class Account {
     private final AccountId accountId;
     private Money balance;
-    private final Deque<History> histories = new ArrayDeque<>();
+    private final Deque<Transaction> histories = new ArrayDeque<>();
 
     public Account(BigDecimal initialBalance) {
         this.accountId = new AccountId();
@@ -33,14 +33,14 @@ public class Account {
 
     private void recordHistory(Money credit, Money debit) {
         final ZonedDateTime now = ZonedDateTime.now(ZoneId.of("UTC"));
-        History history = new History.HistoryBuilder()
+        Transaction transaction = new Transaction.HistoryBuilder()
                 .date(now)
                 .credit(credit)
                 .debit(debit)
                 .balance(this.balance)
                 .build();
 
-        histories.addFirst(history);
+        histories.addFirst(transaction);
     }
 
     public AccountId getAccountId() {
@@ -51,7 +51,7 @@ public class Account {
         return this.balance;
     }
 
-    public Deque<History> getHistory() {
+    public Deque<Transaction> getHistory() {
         return histories;
     }
 }
